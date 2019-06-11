@@ -1,0 +1,49 @@
+﻿
+/*저는 이번 과제를 geth로 진행했습니다. geth파일이 네트워크상에서 
+채굴하는 과정이라 이더리움 언어인 solidity 코드도 작성해서
+ 제출하겠습니다. 온라인 상에서 컴파일 시킬 수 있는 파일입니다.*/
+ 
+
+pragma solidity ^0.4.8;
+
+
+contract recieve{ //이더리움 값을 받아서 추가해주는 송금을 받는 스마트 컨트랙트입니다.
+
+address public sender;
+uint public rEther;
+
+function() payable{
+        sender = msg.sender;
+
+        rEther += msg.value;
+
+    }
+
+}
+
+
+
+contract destructContract{
+
+
+address public owner=msg.sender;
+
+
+function close(){
+
+        require(msg.sender == owner);
+
+        
+        selfdestruct(owner);
+
+    }
+    
+    
+function Balance() constant returns (uint)
+ {
+        return this.balance;
+    }//값을 반환해주는 함수입니다.
+}
+
+
+
